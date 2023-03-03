@@ -4,33 +4,32 @@
  */
 package controller;
 
+import controller.auth.BaseAuthenticationController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import model.Account;
 
 /**
  *
- * @author torao
+ * @author bahoann79
  */
-public class HomeController extends HttpServlet {
+public class HomeController extends BaseAuthenticationController {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response, Account account)
             throws ServletException, IOException {
         request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
+        processRequest(request, response, account);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
+        processRequest(request, response, account);
     }
 }
