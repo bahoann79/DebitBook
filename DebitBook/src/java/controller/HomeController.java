@@ -20,7 +20,7 @@ public class HomeController extends BaseAuthenticationController {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response, Account account)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/home.jsp").forward(request, response);
     }
 
     @Override
