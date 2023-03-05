@@ -4,6 +4,7 @@
     Author     : bahoann79
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,65 +32,64 @@
         crossorigin="anonymous"></script>
 
         <script src="https://www.google.com/recaptcha/api.js"></script>
-        
+
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css"/>
 
     </head>
     <body>
 
-
         <div class="h1 text-center mt-4 mb-2 header">Login Form</div>
 
-<!--    <c:if test="${requestScope.message ne null}">
-        <div class="alert alert-danger text-center">
-            ${requestScope.message}
+        <c:if test="${requestScope.message ne null}">
+            <div class="alert alert-danger text-center">
+                ${requestScope.message}
+            </div>
+        </c:if>
+        <c:if test="${requestScope.noti ne null}">
+            <div class="alert alert-success text-center">
+                ${requestScope.noti}
+            </div>
+        </c:if>
+
+        <div class="container">
+            <div class="content mt-3">
+
+                <div class="h3 text-center content-text">Login to your account</div>
+                <p class="text-center content-desc">Don't have an account? <a href="register">Sign Up Now !</a></p>
+
+                <form action="login" class="mt-4" id="loginForm" method="post"  >
+
+                    <div class="form-group form-item">
+                        <label for="email" class="label-field">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control " placeholder="E-mail" id="email" name="email">
+                        <div id="email-error" class="text-danger ml-1"></div>
+                    </div>
+
+                    <div class="form-group mt-3 form-item">
+                        <label for="password" class="label-field">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control " placeholder="Password" id="password" name="password">
+                        <div id="password-error" class="text-danger ml-1"></div>
+                    </div>
+
+                    <div class="g-recaptcha" data-sitekey="6LeBzHwkAAAAADz0I_qTXDeh5BhEPIk2dJ2lMcuW"></div>
+
+                    <div class="form-check mt-4">
+                        <a class="form-item-forgot" href="forgotPassword">Forgot password?</a>
+                    </div>
+
+                    <div class="form-group mt-3 form-item-btn">
+                        <button type="submit" class="btn btn-primary btn-register form-control"
+                                id="login-btn">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </c:if>
-    <c:if test="${requestScope.noti ne null}">
-        <div class="alert alert-success text-center">
-            ${requestScope.noti}
-        </div>
-    </c:if>-->
 
-    <div class="container">
-        <div class="content mt-3">
-
-            <div class="h3 text-center content-text">Login to your account</div>
-            <p class="text-center content-desc">Don't have an account? <a href="register">Sign Up Now !</a></p>
-
-            <form action="login" class="mt-4" id="loginForm" method="post"  >
-
-                <div class="form-group form-item">
-                    <label for="email" class="label-field">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control " placeholder="E-mail" id="email" name="email">
-                    <div id="email-error" class="text-danger ml-1"></div>
-                </div>
-
-                <div class="form-group mt-3 form-item">
-                    <label for="password" class="label-field">Password <span class="text-danger">*</span></label>
-                    <input type="password" class="form-control " placeholder="Password" id="password" name="password">
-                    <div id="password-error" class="text-danger ml-1"></div>
-                </div>
-
-                <div class="g-recaptcha" data-sitekey="6LeBzHwkAAAAADz0I_qTXDeh5BhEPIk2dJ2lMcuW"></div>
-
-                <div class="form-check mt-4">
-                    <a class="form-item-forgot" href="forgotPassword">Forgot password?</a>
-                </div>
-
-                <div class="form-group mt-3 form-item-btn">
-                    <button type="submit" class="btn btn-primary btn-register form-control"
-                            id="login-btn">Login</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
-    type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/login.js" ></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+        type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/login.js" ></script>
 
 
 
-</body>
+    </body>
 </html>
