@@ -31,27 +31,28 @@
         crossorigin="anonymous"></script>
 
         <script src="https://www.google.com/recaptcha/api.js"></script>
+        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css"/>
 
     </head>
     <body>
 
 
-        <div class="h1 text-center mt-4 mb-4 header">Login Form</div>
+        <div class="h1 text-center mt-4 mb-2 header">Login Form</div>
 
-    <c:if test="${requestScope.message ne null}">
+<!--    <c:if test="${requestScope.message ne null}">
         <div class="alert alert-danger text-center">
             ${requestScope.message}
         </div>
     </c:if>
-
     <c:if test="${requestScope.noti ne null}">
         <div class="alert alert-success text-center">
             ${requestScope.noti}
         </div>
-    </c:if>
+    </c:if>-->
 
     <div class="container">
-        <div class="content mt-5">
+        <div class="content mt-3">
 
             <div class="h3 text-center content-text">Login to your account</div>
             <p class="text-center content-desc">Don't have an account? <a href="register">Sign Up Now !</a></p>
@@ -83,18 +84,10 @@
             </form>
         </div>
     </div>
-    <!-- START FOOTER -->
-    <div class="text-center mt-5 footer">
-        <strong>Mọi góp ý, thắc mắc xin liên hệ : </strong> Phòng dịch vụ sinh viên: Email <a
-            href="#">dichvusinhvien@fe.edu.vn</a> . Điện thoại: <strong>(024)7308.13.13 </strong>
-        <p>© Powered by <a href="#">FPT University</a> | <a href="#">CMS</a> | <a href="#">library</a> | <a
-                href="#">books24x7</a></p>
-    </div>
-    <!-- END FOOTER -->
 
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
     type="text/javascript"></script>
-    <script src="/DebtSystem/assets/js/login.js" ></script>
+    <script src="${pageContext.request.contextPath}/assets/js/login.js" ></script>
 
 
 
