@@ -21,12 +21,13 @@ import util.SQLCommand;
 public class AccountDBContext extends DBContext<Account> {
 
     public Account get(String username, String password) {
-
+        PreparedStatement stm = null;
+        ResultSet rs = null;
         try {
-            PreparedStatement stm = connection.prepareStatement(SQLCommand.ACCOUNT_QUERY_FIND_BY_USERNAME_AND_PASSWORD);
+            stm = connection.prepareStatement(SQLCommand.ACCOUNT_QUERY_FIND_BY_USERNAME_AND_PASSWORD);
             stm.setString(1, username);
             stm.setString(2, password);
-            ResultSet rs = stm.executeQuery();
+            rs = stm.executeQuery();
             if (rs.next()) {
                 Account account = new Account();
                 account.setUsername(username);
@@ -42,6 +43,8 @@ public class AccountDBContext extends DBContext<Account> {
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeResources(connection, stm, rs);
         }
         return null;
     }
