@@ -5,7 +5,11 @@
 package service;
 
 import dal.AccountDBContext;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Account;
+import util.MD5;
 
 /**
  *
@@ -14,12 +18,15 @@ import model.Account;
 public class AccountService {
 
     public Account get(String username, String password) {
-        AccountDBContext accDB = new AccountDBContext();
-        Account account = accDB.get(username, password);
-        return account;
+        try {
+            AccountDBContext accDB = new AccountDBContext();
+            MD5 encode = new MD5();
+            Account account = accDB.get(username, encode.encodeMD5(password));
+            return account;
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(AccountService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
-    
-    
-
 
 }
