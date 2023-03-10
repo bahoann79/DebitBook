@@ -16,6 +16,10 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controller.user.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerifyEmailController</servlet-name>
+        <servlet-class>controller.user.VerifyEmailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyEmailController</servlet-name>
+        <url-pattern>/verifyEmail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
