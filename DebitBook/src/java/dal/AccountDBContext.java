@@ -49,8 +49,42 @@ public class AccountDBContext extends DBContext<Account> {
         return null;
     }
 
+    public Account get(String username) {
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            stm = connection.prepareStatement(SQLCommand.ACCOUNT_QUERY_FIND_BY_USERNAME);
+            stm.setString(1, username);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                Account account = new Account();
+                account.setUsername(rs.getString("username"));
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                account.getUsers().add(user);
+                return account;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeResources(connection, stm, rs);
+        }
+        return null;
+    }
+
     @Override
     public void insert(Account model) {
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(SQLCommand.ACCOUNT_QUERY_INSERT);
+            stm.setString(1, model.getUsername());
+            stm.setString(2, model.getPassword());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
@@ -70,12 +104,4 @@ public class AccountDBContext extends DBContext<Account> {
     public ArrayList<Account> list() {
         return null;
     }
-
-    public static void main(String[] args) {
-        AccountDBContext accountDBContext = new AccountDBContext();
-
-        Account account = accountDBContext.get("bahoann@gmail.com", "202cb962ac59075b964b07152d234b70");
-        System.out.println(account);
-    }
-
 }
