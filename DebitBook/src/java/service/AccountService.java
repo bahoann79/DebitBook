@@ -29,4 +29,23 @@ public class AccountService {
         return null;
     }
 
+    public boolean get(String username) {
+        AccountDBContext accDB = new AccountDBContext();
+        Account account = accDB.get(username);
+        return account != null;
+    }
+
+    public void insert(String email, String password) {
+        try {
+            Account account = new Account();
+            MD5 encode = new MD5();
+            account.setUsername(email);
+            account.setPassword(encode.encodeMD5(password));
+            AccountDBContext accDB = new AccountDBContext();
+            accDB.insert(account);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(AccountService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
