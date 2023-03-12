@@ -41,6 +41,16 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
+    // for register
+    public User(String name, String email, String address, String phoneNumber, boolean gender, String image) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }
