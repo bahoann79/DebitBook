@@ -4,6 +4,7 @@
     Author     : bahoann79
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,55 +31,55 @@
                 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 
-          <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/verifyEmail.css"/>
-        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/verifyEmail.css"/>
+
     </head>
     <body>
 
-    <c:if test="${requestScope.message ne null}">
-        <div class="alert alert-danger text-center mt-5">
-            ${requestScope.message}
+        <c:if test="${requestScope.message ne null}">
+            <div class="alert alert-danger text-center mt-5">
+                ${requestScope.message}
+            </div>
+        </c:if>
+
+        <c:if test="${requestScope.noti ne null}">
+            <div class="alert alert-success text-center mt-5">
+                ${requestScope.noti}
+            </div>
+        </c:if>
+
+        <div class="container">
+            <div class="content mt-5">
+                <div class="h3 text-center content-text">Verify your email</div>
+
+                <form action="verifyEmail" class="mt-4" id="verifyEmailForm" method="post"  >
+                    <p>Email: ${requestScope.account.username}</p>
+                    <p>Display Name: ${requestScope.account.getUsers().get(0).getDisplay_name()}</p>
+                    <p>Phone Number: ${requestScope.account.getUsers().get(0).getPhone_number()}</p>
+                    <input  name="userId" type="hidden" value="${requestScope.userId}">
+                    <input  name="otpId" type="hidden" value="${requestScope.otpId}">
+                    <input  name="email" type="hidden" value="${requestScope.email}">
+                    <input  name="typeOTP" type="hidden" value="${requestScope.typeOTP}">
+                    <div class="form-group form-item">
+                        <label for="code" class="label-field">Code Active <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " placeholder="Enter your code" id="code" name="code">
+                        <div id="code-error" class="text-danger ml-1"></div>
+
+                        <a href="resend?userId=${requestScope.userId}&typeOTP=${requestScope.typeOTP}">Resend Code</a>
+                    </div>
+                    <div class="form-group mt-3 form-item-btn">
+                        <button type="submit" class="btn btn-primary form-control"
+                                id="active-btn">Active</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </c:if>
 
-    <c:if test="${requestScope.noti ne null}">
-        <div class="alert alert-success text-center mt-5">
-            ${requestScope.noti}
-        </div>
-    </c:if>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+        type="text/javascript"></script>
 
-    <div class="container">
-        <div class="content mt-5">
-            <div class="h3 text-center content-text">Verify your email</div>
-
-            <form action="verifyEmail" class="mt-4" id="verifyEmailForm" method="post"  >
-                <p>Email: ${requestScope.account.username}</p>
-                <p>Display Name: ${requestScope.account.getUsers().get(0).getDisplay_name()}</p>
-                <p>Phone Number: ${requestScope.account.getUsers().get(0).getPhone_number()}</p>
-                <input  name="userId" type="hidden" value="${requestScope.userId}">
-                <input  name="otpId" type="hidden" value="${requestScope.otpId}">
-                <input  name="email" type="hidden" value="${requestScope.email}">
-                <input  name="typeOTP" type="hidden" value="${requestScope.typeOTP}">
-                <div class="form-group form-item">
-                    <label for="code" class="label-field">Code Active <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " placeholder="Enter your code" id="code" name="code">
-                    <div id="code-error" class="text-danger ml-1"></div>
-
-                    <a href="resend?userId=${requestScope.userId}&typeOTP=${requestScope.typeOTP}">Resend Code</a>
-                </div>
-                <div class="form-group mt-3 form-item-btn">
-                    <button type="submit" class="btn btn-primary form-control"
-                            id="active-btn">Active</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
-    type="text/javascript"></script>
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/verifyEmail.js"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/verifyEmail.js"/>
 
 
-</body>
+    </body>
 </html>
