@@ -42,7 +42,7 @@ public class RegisterController extends HttpServlet {
         String img = (request.getParameter("img").length() == 0 || request.getParameter("img") == null) ? defaultImg : request.getParameter("img");
 
         AccountService accountService = new AccountService();
-        boolean flag = accountService.get(name);
+        boolean flag = accountService.get(email);
 
         if (flag) {
             String errorMessage = "Email already exists. Please try again !";
@@ -58,7 +58,7 @@ public class RegisterController extends HttpServlet {
             String otpCode = otpService.createOTPRequest(userId, otpType);
 
             OTPRequest otp = otpService.sendMail(email, otpCode);
-            
+
             request.setAttribute("otp", otp);
             request.getRequestDispatcher("views/user/verifyEmail.jsp").forward(request, response);
 
