@@ -54,8 +54,8 @@
 
                 <form action="verifyEmail" class="mt-4" id="verifyEmailForm" method="post"  >
                     <p>Email: ${requestScope.account.username}</p>
-                    <p>Display Name: ${requestScope.account.getUsers().get(0).getDisplay_name()}</p>
-                    <p>Phone Number: ${requestScope.account.getUsers().get(0).getPhone_number()}</p>
+                    <p>Display Name: ${requestScope.account.getUsers().get(0).getName()}</p>
+                    <p>Phone Number: ${requestScope.account.getUsers().get(0).getPhoneNumber()}</p>
                     <input  name="userId" type="hidden" value="${requestScope.userId}">
                     <input  name="otpId" type="hidden" value="${requestScope.otpId}">
                     <input  name="email" type="hidden" value="${requestScope.email}">

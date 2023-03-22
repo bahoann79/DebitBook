@@ -146,4 +146,10 @@ public class User {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", image=" + image + ", isActive=" + isActive + ", isAdmin=" + isAdmin + ", debtors=" + debtors + ", otpReqs=" + otpReqs + ", account=" + account + '}';
+    }
+
 }

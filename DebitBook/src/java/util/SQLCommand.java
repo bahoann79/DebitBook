@@ -16,8 +16,8 @@ public class SQLCommand {
             + "FROM Account a LEFT JOIN [User] u ON a.username = u.email\n"
             + "WHERE a.username = ? AND a.[password] = ?";
 
-    // check email exists for register || get user id 
-    public static final String ACCOUNT_QUERY_FIND_BY_USERNAME = "SELECT a.username, u.id\n"
+    // check email exists for register || get user id & basic information of account
+    public static final String ACCOUNT_QUERY_FIND_BY_USERNAME = "SELECT a.username, u.id, u.[name], u.[address], u.phone_number, u.gender\n"
             + "FROM Account a LEFT JOIN [User] u ON a.username = u.email\n"
             + "WHERE a.username = ?";
 
