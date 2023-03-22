@@ -62,6 +62,11 @@ public class AccountDBContext extends DBContext<Account> {
                 account.setUsername(rs.getString("username"));
                 User user = new User();
                 user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(username);
+                user.setAddress(rs.getString("address"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                user.setGender(rs.getBoolean("gender"));
                 account.getUsers().add(user);
                 return account;
             }

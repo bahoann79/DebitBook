@@ -29,10 +29,10 @@ public class AccountService {
         return null;
     }
 
-    public boolean get(String username) {
+    public Account get(String username) {
         AccountDBContext accDB = new AccountDBContext();
         Account account = accDB.get(username);
-        return account != null;
+        return account;
     }
 
     public void insert(String email, String password) {

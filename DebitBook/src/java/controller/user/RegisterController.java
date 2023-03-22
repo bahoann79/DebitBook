@@ -42,9 +42,9 @@ public class RegisterController extends HttpServlet {
         String img = (request.getParameter("img").length() == 0 || request.getParameter("img") == null) ? defaultImg : request.getParameter("img");
 
         AccountService accountService = new AccountService();
-        boolean flag = accountService.get(email);
+        Account accountVerify = accountService.get(email);
 
-        if (flag) {
+        if (accountVerify != null) {
             String errorMessage = "Email already exists. Please try again !";
             request.setAttribute("errorMessage", errorMessage);
             request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
@@ -57,9 +57,11 @@ public class RegisterController extends HttpServlet {
             OTPService otpService = new OTPService();
             String otpCode = otpService.createOTPRequest(userId, otpType);
 
-            OTPRequest otp = otpService.sendMail(email, otpCode);
+            OTPRequest otp = otpService.sendMail(email, otpType, otpCode, name);
+            Account account = accountService.get(email);
 
             request.setAttribute("otp", otp);
+            request.setAttribute("account", account);
             request.getRequestDispatcher("views/user/verifyEmail.jsp").forward(request, response);
 
         }
