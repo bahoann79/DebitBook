@@ -22,12 +22,13 @@ public class OTPService {
 
     }
 
-    public OTPRequest sendMail(String email, String otpCode) {
+    public OTPRequest sendMail(String email, int otpType, String otpCode, String name) {
         OTPRequestDBContext otpDB = new OTPRequestDBContext();
-        OTPRequest otp = otpDB.get(otpCode);       
+        OTPRequest otp = otpDB.get(otpCode);
+        String message = otpDB.messageType(otpType, otpCode, name);
         Email sendEmail = new Email();
-        sendEmail.sendMail(email, "Verify Your Code", otpCode);        
-        
+        sendEmail.sendMail(email, "Verify Your Code", message);
+
         return otp;
     }
 

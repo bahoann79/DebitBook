@@ -20,6 +20,32 @@ import util.SQLCommand;
  */
 public class OTPRequestDBContext extends DBContext<OTPRequest> {
 
+    String messageRegister = " <div style=\"text-align: center;\n"
+            + "       background-color: #d3d3d3;\n"
+            + "       padding: 10px;    font-size: 20px;;\">"
+            + "Bạn hoặc ai đó đã sử dụng email để kích hoạt tài khoản khi đăng ký có tên " + "<h1>display_name</h1>" + "\n"
+            + "\n"
+            + "Ðây là  đoạn mã để kích hoạt tài khoản : <h1 style=\"color: red;\">otp_code</h1>\n"
+            + "\n"
+            + " <p style=\"font-style: italic;\"> Lưu ý: Mã code này chỉ có thẻ sử dụng  trong vòng 2 phút kể từ thời gian  gửi . Sau thời gian trên hãy sử dụng chức năng quên mật khẩu để tiến hành tạo mới mật khẩu và kích hoạt tài khoản. </p>\n"
+            + "\n"
+            + "\n"
+            + "<p style=\"font-weight: 800;\">Trân trọng cảm ơn!!</p>"
+            + "</div>";
+
+    String messageForgotPassword = " <div style=\"text-align: center;\n"
+            + "       background-color: #d3d3d3;\n"
+            + "       padding: 10px;    font-size: 20px;\">"
+            + "Bạn hoặc ai đó đã sử dụng email khi quên mật khẩu với tài khoản có tên " + "<h1>display_name</h1>" + "\n"
+            + "\n"
+            + "Ðây là  đoạn mã để kích hoạt tài khoản : <h1 style=\"color: red;\">otp_code</h1>\n"
+            + "\n"
+            + " <p style=\"font-style: italic;\"> Lưu ý: Mã code này chỉ có thẻ sử dụng  trong vòng 2 phút kể từ thời gian  gửi . Sau thời gian trên hãy sử dụng chức năng quên mật khẩu để tiến hành tạo mới mật khẩu và kích hoạt tài khoản. </p>\n"
+            + "\n"
+            + "\n"
+            + "<p style=\"font-weight: 800;\">Trân trọng cảm ơn!!</p>"
+            + "</div>";
+
     // insert new otp request for user
     public String createOTPRequest(int userId, int otpType) {
         PreparedStatement stm = null;
@@ -69,6 +95,22 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
             closeResources(connection, stm, rs);
         }
         return null;
+    }
+
+    public String messageType(int otpType, String otpCode, String name) {
+        String message = "";
+
+        if (otpType == 1) {
+            message = messageRegister;
+        }
+        if (otpType == 2) {
+            message = messageForgotPassword;
+        }
+
+        String replaceName = message.replace("display_name", name);
+        String replacedCode = replaceName.replace("otp_code", otpCode);
+
+        return replacedCode;
     }
 
     @Override
