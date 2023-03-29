@@ -67,4 +67,14 @@ public class SQLCommand {
             + "  FROM [dbo].[OTPRequest]\n"
             + "  WHERE isDeleted = 0 AND code = ?";
 
+    // get otp request by code for active account
+    public static final String OTP_QUERY_GET_BY_CODE_NOT_ACTIVE = "SELECT [id]\n"
+            + "      ,[code]\n"
+            + "      ,[type]\n"
+            + "      ,[isVerify]\n"
+            + "      ,[createdBy]\n"
+            + "      ,[createdAt]\n"
+            + "  FROM [dbo].[OTPRequest]\n"
+            + "  WHERE isDeleted = 0 AND isVerify = 0 AND createdBy = ? AND id = ? AND code = ?";
+
 }
