@@ -97,6 +97,34 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
         return null;
     }
 
+    public OTPRequest get(int userId, int otpId, String otpCode) {
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = connection.prepareStatement(SQLCommand.OTP_QUERY_GET_BY_CODE_NOT_ACTIVE);
+            stm.setInt(1, userId);
+            stm.setInt(2, otpId);
+            stm.setString(3, otpCode);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                OTPRequest otp = new OTPRequest();
+                otp.setId(rs.getInt("id"));
+                otp.setCode(otpCode);
+                otp.setType(rs.getString("type"));
+                otp.setIsVerify(rs.getBoolean("isVerify"));
+                otp.setCreatedBy(rs.getInt("createdBy"));
+                otp.setCreatedAt(rs.getDate("createdAt"));
+                return otp;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeResources(connection, stm, rs);
+        }
+        return null;
+    }
+
     public String messageType(int otpType, String otpCode, String name) {
         String message = "";
 
@@ -137,5 +165,4 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
     public ArrayList<OTPRequest> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }

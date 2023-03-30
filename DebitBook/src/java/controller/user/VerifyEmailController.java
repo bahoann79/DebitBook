@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import model.OTPRequest;
+import service.OTPService;
 
 /**
  *
@@ -17,20 +19,27 @@ import java.io.PrintWriter;
  */
 public class VerifyEmailController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/views/user/verifyEmail.jsp").forward(request, response);
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        int otpId = Integer.parseInt(request.getParameter("otpId"));
+        String otpCodeInput = request.getParameter("code");
+        OTPService otpService = new OTPService();
+        OTPRequest otp = otpService.get(userId, otpId, otpCodeInput);
+
+        if (otp != null) {
+
+        } else {
+            request.setAttribute("errorMessage", "Code is invalid !");
+        }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 }

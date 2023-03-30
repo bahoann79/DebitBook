@@ -32,4 +32,10 @@ public class OTPService {
         return otp;
     }
 
+    public OTPRequest get(int userId, int otpId, String otpCode) {
+        OTPRequestDBContext otpDB = new OTPRequestDBContext();
+        OTPRequest otp = otpDB.get(userId, otpId, otpCode);
+        return otp;
+    }
+
 }
