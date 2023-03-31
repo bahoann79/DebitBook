@@ -36,15 +36,15 @@
     </head>
     <body>
 
-        <c:if test="${requestScope.message ne null}">
+        <c:if test="${requestScope.errorMessage ne null}">
             <div class="alert alert-danger text-center mt-5">
-                ${requestScope.message}
+                ${requestScope.errorMessage}
             </div>
         </c:if>
 
-        <c:if test="${requestScope.noti ne null}">
+        <c:if test="${requestScope.message ne null}">
             <div class="alert alert-success text-center mt-5">
-                ${requestScope.noti}
+                ${requestScope.message}
             </div>
         </c:if>
 
@@ -56,10 +56,10 @@
                     <p>Email: ${requestScope.account.username}</p>
                     <p>Display Name: ${requestScope.account.getUsers().get(0).getName()}</p>
                     <p>Phone Number: ${requestScope.account.getUsers().get(0).getPhoneNumber()}</p>
-                    <input  name="userId" type="hidden" value="${requestScope.userId}">
-                    <input  name="otpId" type="hidden" value="${requestScope.otpId}">
-                    <input  name="email" type="hidden" value="${requestScope.email}">
-                    <input  name="typeOTP" type="hidden" value="${requestScope.typeOTP}">
+                    <input  name="userId" type="text" value="${requestScope.account.getUsers().get(0).getId()}"> user id
+                    <input  name="otpId" type="text" value="${requestScope.otp.getId()}"> otp id
+                    <input  name="email" type="text" value="${requestScope.account.username}"> email
+                    <input  name="otpType" type="text" value="${requestScope.otpType}"> otp type
                     <div class="form-group form-item">
                         <label for="code" class="label-field">Code Active <span class="text-danger">*</span></label>
                         <input type="text" class="form-control " placeholder="Enter your code" id="code" name="code">
@@ -68,8 +68,7 @@
                         <a href="resend?userId=${requestScope.userId}&typeOTP=${requestScope.typeOTP}">Resend Code</a>
                     </div>
                     <div class="form-group mt-3 form-item-btn">
-                        <button type="submit" class="btn btn-primary form-control"
-                                id="active-btn">Active</button>
+                        <button type="submit" class="btn btn-primary form-control" id="active-btn">Active</button>
                     </div>
                 </form>
             </div>
@@ -77,9 +76,7 @@
 
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
         type="text/javascript"></script>
-
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/verifyEmail.js"/>
-
+        <script src="${pageContext.request.contextPath}/assets/js/verifyEmail.js"></script>
 
     </body>
 </html>
