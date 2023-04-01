@@ -40,14 +40,14 @@
 
         <div class="h1 text-center mt-4 mb-2 header">Login Form</div>
 
-        <c:if test="${requestScope.message ne null}">
+        <c:if test="${requestScope.errorMessage ne null}">
             <div class="alert alert-danger text-center">
-                ${requestScope.message}
+                ${requestScope.errorMessage}
             </div>
         </c:if>
-        <c:if test="${requestScope.noti ne null}">
+        <c:if test="${requestScope.message ne null}">
             <div class="alert alert-success text-center">
-                ${requestScope.noti}
+                ${requestScope.message}
             </div>
         </c:if>
 

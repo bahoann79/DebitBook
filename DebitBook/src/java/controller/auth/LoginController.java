@@ -42,11 +42,11 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("home?userId=" + account.getUsers().get(0).getId());
         } else {
             if (verify) {
-                String message = "Your email or password is invalid. Please try again !";
-                request.setAttribute("message", message);
+                String errorMessage = "Your email or password is invalid. Please try again !";
+                request.setAttribute("errorMessage", errorMessage);
             } else {
-                String message = "You missed the Captcha";
-                request.setAttribute("message", message);
+                String errorMessage = "You missed the Captcha";
+                request.setAttribute("errorMessage", errorMessage);
             }
             request.getRequestDispatcher("views/auth/login.jsp").forward(request, response);
 
