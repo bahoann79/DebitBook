@@ -45,7 +45,12 @@ public class SQLCommand {
             + "           ,?\n"
             + "           ,?)";
 
-    // insert new otp request
+    // set status for user is verified
+    public static final String USER_QUERY_VERIFY_USER_ACTIVE  = "UPDATE [dbo].[User]\n"
+            + "   SET [isActive] = 1\n"
+            + " WHERE id = ?";
+
+// insert new otp request
     public static final String OTP_QUERY_INSERT = "INSERT INTO [dbo].[OTPRequest]\n"
             + "           ([code]\n"
             + "           ,[type]\n"
@@ -77,4 +82,9 @@ public class SQLCommand {
             + "  FROM [dbo].[OTPRequest]\n"
             + "  WHERE isDeleted = 0 AND isVerify = 0 AND createdBy = ? AND id = ? AND code = ?";
 
+    // set status of otp is verified
+    public static final String OTP_QUERY_VERIFY_CODE_ACTIVE = "UPDATE [dbo].[OTPRequest]\n"
+            + "   SET [isVerify] = 1\n"
+            + "      ,[updatedAt] = GETDATE()\n"
+            + "   WHERE id = ?";
 }
