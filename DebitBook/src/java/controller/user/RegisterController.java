@@ -62,6 +62,7 @@ public class RegisterController extends HttpServlet {
 
             request.setAttribute("otp", otp);
             request.setAttribute("account", account);
+            request.setAttribute("otpType", otpType);
             request.getRequestDispatcher("views/user/verifyEmail.jsp").forward(request, response);
 
         }
