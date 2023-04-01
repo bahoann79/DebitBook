@@ -56,10 +56,10 @@
                     <p>Email: ${requestScope.account.username}</p>
                     <p>Display Name: ${requestScope.account.getUsers().get(0).getName()}</p>
                     <p>Phone Number: ${requestScope.account.getUsers().get(0).getPhoneNumber()}</p>
-                    <input  name="userId" type="text" value="${requestScope.account.getUsers().get(0).getId()}"> user id
-                    <input  name="otpId" type="text" value="${requestScope.otp.getId()}"> otp id
-                    <input  name="email" type="text" value="${requestScope.account.username}"> email
-                    <input  name="otpType" type="text" value="${requestScope.otpType}"> otp type
+                    <input  name="userId" type="hidden" value="${requestScope.account.getUsers().get(0).getId()}">
+                    <input  name="otpId" type="hidden" value="${requestScope.otpId}"> 
+                    <input  name="email" type="hidden" value="${requestScope.account.username}"> 
+                    <input  name="otpType" type="hidden" value="${requestScope.otpType}">
                     <div class="form-group form-item">
                         <label for="code" class="label-field">Code Active <span class="text-danger">*</span></label>
                         <input type="text" class="form-control " placeholder="Enter your code" id="code" name="code">

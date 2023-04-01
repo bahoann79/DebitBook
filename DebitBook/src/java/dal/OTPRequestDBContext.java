@@ -141,28 +141,38 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
         return replacedCode;
     }
 
-    @Override
-    public void insert(OTPRequest model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void verifyCodeActive(int otpId) {
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(SQLCommand.OTP_QUERY_VERIFY_CODE_ACTIVE);
+            stm.setInt(1, otpId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
+    public void insert(OTPRequest model) {  
+    }
+    
+
+    @Override
     public void update(OTPRequest model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void delete(OTPRequest model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public OTPRequest get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     @Override
     public ArrayList<OTPRequest> list() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 }

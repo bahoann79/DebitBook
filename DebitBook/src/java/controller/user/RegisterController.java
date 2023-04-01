@@ -60,8 +60,8 @@ public class RegisterController extends HttpServlet {
             OTPRequest otp = otpService.sendMail(email, otpType, otpCode, name);
             Account account = accountService.get(email);
 
-            request.setAttribute("otp", otp);
             request.setAttribute("account", account);
+            request.setAttribute("otpId", otp.getId());
             request.setAttribute("otpType", otpType);
             request.getRequestDispatcher("views/user/verifyEmail.jsp").forward(request, response);
 

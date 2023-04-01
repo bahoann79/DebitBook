@@ -26,4 +26,10 @@ public class UserService {
         return userId;
     }
 
+    // set status for user is verified
+    public void verifyUserActive(int userId) {
+        UserDBContext userDB = new UserDBContext();
+        userDB.verifyUserActive(userId);            
+    }
+
 }

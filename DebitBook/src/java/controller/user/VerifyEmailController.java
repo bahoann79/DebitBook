@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import model.Account;
 import model.OTPRequest;
 import service.AccountService;
 import service.OTPService;
+import service.UserService;
 
 /**
  *
@@ -44,13 +44,33 @@ public class VerifyEmailController extends HttpServlet {
         int otpType = Integer.parseInt(request.getParameter("otpType"));
 
         if (otp != null) {
+            if (!otpService.isTimeExpired(otp.getCreatedAt())) {
+                otpService.verifyCodeActive(otp.getId());
+                UserService userService = new UserService();
+                userService.verifyUserActive(userId);
+                
+                if (otpType == 1) {
+                    String message = "Your account has been registed successfully !";
+                    request.setAttribute("message", message);
+                    request.getRequestDispatcher("/views/auth/login.jsp").forward(request, response);
+                } else if (otpType == 2) {
+                    request.getRequestDispatcher("/views/user/changepassword.jsp").forward(request, response);
+                }
+
+            } else {
+                request.setAttribute("errorMessage", "Code is expired !");
+                request.setAttribute("account", account);
+                request.setAttribute("otpId", otpId);
+                request.setAttribute("otpType", otpType);
+                request.getRequestDispatcher("/views/user/verifyEmail.jsp").forward(request, response);
+            }
 
         } else {
-
             request.setAttribute("errorMessage", "Code is invalid !");
             request.setAttribute("account", account);
-            request.setAttribute("otp", otp);
+            request.setAttribute("otpId", otpId);
             request.setAttribute("otpType", otpType);
+            request.getRequestDispatcher("/views/user/verifyEmail.jsp").forward(request, response);
         }
 
     }

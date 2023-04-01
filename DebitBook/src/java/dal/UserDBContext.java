@@ -35,7 +35,18 @@ public class UserDBContext extends DBContext<User> {
         } catch (SQLException ex) {
             Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
 
+    // set status for user is verified
+    public void verifyUserActive(int userId) {
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(SQLCommand.USER_QUERY_VERIFY_USER_ACTIVE);
+            stm.setInt(1, userId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

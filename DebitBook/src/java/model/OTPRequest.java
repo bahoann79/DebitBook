@@ -15,7 +15,6 @@ public class OTPRequest {
     private int id;
     private String code;
     private String type;
-    private Date expiredTime;
     private boolean isVerify;
     private int createdBy;
     private Date createdAt;
@@ -27,11 +26,10 @@ public class OTPRequest {
     public OTPRequest() {
     }
 
-    public OTPRequest(int id, String code, String type, Date expiredTime, boolean isVerify, int createdBy, Date createdAt, Date updatedAt, Date deletedAt, boolean isDeleted) {
+    public OTPRequest(int id, String code, String type, boolean isVerify, int createdBy, Date createdAt, Date updatedAt, Date deletedAt, boolean isDeleted) {
         this.id = id;
         this.code = code;
         this.type = type;
-        this.expiredTime = expiredTime;
         this.isVerify = isVerify;
         this.createdBy = createdBy;
         this.createdAt = createdAt;
@@ -63,15 +61,7 @@ public class OTPRequest {
     public void setType(String type) {
         this.type = type;
     }
-
-    public Date getExpiredTime() {
-        return expiredTime;
-    }
-
-    public void setExpiredTime(Date expiredTime) {
-        this.expiredTime = expiredTime;
-    }
-
+    
     public boolean isIsVerify() {
         return isVerify;
     }
