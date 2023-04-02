@@ -67,6 +67,8 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
             return otpCode;
         } catch (SQLException ex) {
             Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeResources(connection, stm);
         }
         return null;
     }
@@ -149,6 +151,8 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            closeResources(connection, stm);
         }
 
     }
