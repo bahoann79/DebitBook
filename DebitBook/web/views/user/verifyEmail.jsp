@@ -63,13 +63,21 @@
                     <div class="form-group form-item">
                         <label for="code" class="label-field">Code Active <span class="text-danger">*</span></label>
                         <input type="text" class="form-control " placeholder="Enter your code" id="code" name="code">
-                        <div id="code-error" class="text-danger ml-1"></div>
+                        <div id="code-error" class="text-danger ml-1"></div>                   
+                    </div>
 
-                        <a href="resend?userId=${requestScope.userId}&typeOTP=${requestScope.typeOTP}">Resend Code</a>
+                    <div class="form-group mt-4 form-item-btn">
+                        <div class="resend-btn">
+                            <button type="button" class="btn btn-danger form-control" id="resend-btn">
+                                <a href="#">Resend</a>
+                            </button>
+                        </div>
+
+                        <div class="submit-btn">
+                            <button type="submit" class="btn btn-primary form-control" id="active-btn">Active</button>
+                        </div>
                     </div>
-                    <div class="form-group mt-3 form-item-btn">
-                        <button type="submit" class="btn btn-primary form-control" id="active-btn">Active</button>
-                    </div>
+
                 </form>
             </div>
         </div>

@@ -40,7 +40,7 @@ img {
 .content {
     padding: 0 28px 28px 28px;
     background-color: #fff;
-    height: 440px;
+    height: 50%;
 }
 
 .content .content-text {
@@ -52,6 +52,24 @@ img {
     opacity: 0.8;
     font-size: 14px;
 }
+
+.form-item-btn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-item-btn .resend-btn,
+.form-item-btn .submit-btn
+ {
+    display: inline-block;
+    width: 40%;
+}
+
+.form-item-btn .resend-btn a{
+    color: #fff;
+    text-decoration: none;
+}
+
 
 
 
