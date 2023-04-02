@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author bahoann79
  * @param <T>
  */
-public abstract class DBContext<T> {        
+public abstract class DBContext<T> {
 
     protected Connection connection;
 
@@ -52,6 +52,23 @@ public abstract class DBContext<T> {
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void closeResources(Connection connection, PreparedStatement preparedStatement) {
         try {
             if (preparedStatement != null) {
                 preparedStatement.close();
