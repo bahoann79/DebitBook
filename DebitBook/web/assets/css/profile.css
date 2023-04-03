@@ -3,28 +3,6 @@
     Author     : bahoann79
 */
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #f8f8f8;
-}
-
-.navbar {
-    position: initial;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.nav-item {
-    font-size: 24px;
-    margin: 0 20px;
-}
-
-
 .container h1 {
     border-bottom: 1px solid #000;
     padding: 12px;
