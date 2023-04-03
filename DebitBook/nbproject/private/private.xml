@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/service/OTPService.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/util/SQLCommand.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/web/views/user/verifyEmail.jsp</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/controller/user/RegisterController.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/controller/user/VerifyEmailController.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/service/UserService.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/dal/OTPRequestDBContext.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/web/views/home.jsp</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/web/assets/css/profile.css</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/web/views/user/profile.jsp</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/DebitBook/DebitBook/src/java/controller/auth/ProfileController.java</file>
         </group>
     </open-files>
 </project-private>
