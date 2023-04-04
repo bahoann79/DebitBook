@@ -34,7 +34,7 @@
                             <label class="col-form-label">Name</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" value="Nguyễn Bá Hoàn" readonly>
+                            <input type="text" class="form-control" value="${user.name}" readonly>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary form-control">
@@ -49,7 +49,7 @@
                             <label class="col-form-label">Email</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" value="bahoann79@gmail.com" readonly>
+                            <input type="text" class="form-control" value="${user.email}" readonly>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary form-control" disabled >
@@ -64,7 +64,7 @@
                             <label class="col-form-label">Password</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" value="bahoann79@gmail.com" readonly>
+                            <input type="password" class="form-control" value="******" readonly>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary form-control">
@@ -79,7 +79,7 @@
                             <label class="col-form-label">Address</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" value="Ha Noi" readonly>
+                            <input type="text" class="form-control" value="${user.address}" readonly>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary form-control">
@@ -94,7 +94,7 @@
                             <label class="col-form-label">Phone Number</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" value="0983239802" readonly>
+                            <input type="text" class="form-control" value="${user.phoneNumber}" readonly>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary form-control">
@@ -109,11 +109,16 @@
                             <label class="col-form-label">Gender</label>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" id="input-male" class="male gender actived"> Male </button>
-                            <input type="radio" class="" placeholder="" id="male" name="gender" value="1" checked hidden />
-                            <button type="button" id="input-female" class="female gender"> Female </button>
-                            <input type="radio" class="" placeholder="" id="female" name="gender" value="0" hidden />
-                        </div>
+                            <c:if test="${user.gender}">
+                                <button type="button" id="input-male" class="male gender actived"> Male </button>
+                                <button type="button" id="input-female" class="female gender"> Female </button>
+                            </c:if>
+
+                            <c:if test="${!user.gender}">
+                                <button type="button" id="input-male" class="male gender"> Male </button>
+                                <button type="button" id="input-female" class="female gender actived"> Female </button>
+                            </c:if>
+                        </div>                  
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary form-control" disabled>
                                 Edit

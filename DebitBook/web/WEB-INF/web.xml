@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>ProfileController</servlet-name>
-        <servlet-class>controller.auth.ProfileController</servlet-class>
+        <servlet-class>controller.user.ProfileController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ResendOTPController</servlet-name>
