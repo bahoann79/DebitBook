@@ -69,7 +69,10 @@
                     <div class="form-group mt-4 form-item-btn">
                         <div class="resend-btn">
                             <button type="button" class="btn btn-danger form-control" id="resend-btn">
-                                <a href="#">Resend</a>
+                                <a href=
+                                   "resend?userId=${requestScope.account.getUsers().get(0).getId()}&email=${requestScope.account.username}&otpType=${requestScope.otpType}">
+                                    Resend
+                                </a>
                             </button>
                         </div>
 

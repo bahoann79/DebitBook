@@ -24,6 +24,10 @@
         <servlet-name>ProfileController</servlet-name>
         <servlet-class>controller.auth.ProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResendOTPController</servlet-name>
+        <servlet-class>controller.user.ResendOTPController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ProfileController</servlet-name>
         <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResendOTPController</servlet-name>
+        <url-pattern>/resend</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

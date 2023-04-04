@@ -53,6 +53,7 @@ public class RegisterController extends HttpServlet {
             UserService userService = new UserService();
             int userId = userService.insert(name, email, gender, phoneNumber, address, img);
 
+            // create new otp for user
             int otpType = Integer.parseInt(request.getParameter("otpType"));
             OTPService otpService = new OTPService();
             String otpCode = otpService.createOTPRequest(userId, otpType);
