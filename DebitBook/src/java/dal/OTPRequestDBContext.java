@@ -20,6 +20,14 @@ import util.SQLCommand;
  */
 public class OTPRequestDBContext extends DBContext<OTPRequest> {
 
+    // singleton design patttern
+    private static OTPRequestDBContext instance;
+
+    //a single object is used throughout the application, minimizing conflicts and avoiding memory waste.
+    public static OTPRequestDBContext getInstance() {
+        return instance = instance != null ? instance : new OTPRequestDBContext();
+    }
+
     String messageRegister = " <div style=\"text-align: center;\n"
             + "       background-color: #d3d3d3;\n"
             + "       padding: 10px;    font-size: 20px;;\">"
@@ -158,9 +166,8 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
     }
 
     @Override
-    public void insert(OTPRequest model) {  
+    public void insert(OTPRequest model) {
     }
-    
 
     @Override
     public void update(OTPRequest model) {

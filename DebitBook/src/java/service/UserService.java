@@ -18,18 +18,15 @@ public class UserService {
     // insert new user & get user id
     public int insert(String name, String email, boolean gender, String phoneNumber, String address, String img) {
         User user = new User(name, email, address, phoneNumber, gender, img);
-        UserDBContext userDB = new UserDBContext();
-        userDB.insert(user);
-        AccountDBContext accDB = new AccountDBContext();
-        Account account = accDB.get(user.getEmail());
+        UserDBContext.getInstance().insert(user);
+        Account account = AccountDBContext.getInstance().get(user.getEmail());
         int userId = account.getUsers().get(0).getId();
         return userId;
     }
 
     // set status for user is verified
     public void verifyUserActive(int userId) {
-        UserDBContext userDB = new UserDBContext();
-        userDB.verifyUserActive(userId);            
+        UserDBContext.getInstance().verifyUserActive(userId);
     }
 
 }

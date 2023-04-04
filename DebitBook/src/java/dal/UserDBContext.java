@@ -18,6 +18,14 @@ import util.SQLCommand;
  */
 public class UserDBContext extends DBContext<User> {
 
+    // singleton design patttern
+    private static UserDBContext instance;
+
+    //a single object is used throughout the application, minimizing conflicts and avoiding memory waste.
+    public static UserDBContext getInstance() {
+        return instance = instance != null ? instance : new UserDBContext();
+    }
+
     @Override
     public void insert(User model) {
         PreparedStatement stm = null;

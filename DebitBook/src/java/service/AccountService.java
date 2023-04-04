@@ -19,9 +19,8 @@ public class AccountService {
 
     public Account get(String username, String password) {
         try {
-            AccountDBContext accDB = new AccountDBContext();
             MD5 encode = new MD5();
-            Account account = accDB.get(username, encode.encodeMD5(password));
+            Account account = AccountDBContext.getInstance().get(username, encode.encodeMD5(password));
             return account;
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(AccountService.class.getName()).log(Level.SEVERE, null, ex);
@@ -30,8 +29,7 @@ public class AccountService {
     }
 
     public Account get(String username) {
-        AccountDBContext accDB = new AccountDBContext();
-        Account account = accDB.get(username);
+        Account account = AccountDBContext.getInstance().get(username);
         return account;
     }
 
@@ -41,8 +39,7 @@ public class AccountService {
             MD5 encode = new MD5();
             account.setUsername(email);
             account.setPassword(encode.encodeMD5(password));
-            AccountDBContext accDB = new AccountDBContext();
-            accDB.insert(account);
+            AccountDBContext.getInstance().insert(account);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(AccountService.class.getName()).log(Level.SEVERE, null, ex);
         }

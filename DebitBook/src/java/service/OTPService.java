@@ -17,24 +17,21 @@ public class OTPService {
 
     // insert new otp in DB and get code
     public String createOTPRequest(int userId, int otpType) {
-        OTPRequestDBContext otpDB = new OTPRequestDBContext();
-        String otpCode = otpDB.createOTPRequest(userId, otpType);
+        String otpCode = OTPRequestDBContext.getInstance().createOTPRequest(userId, otpType);
         return otpCode;
 
     }
 
     public OTPRequest sendMail(String email, int otpType, String otpCode, String name) {
-        OTPRequestDBContext otpDB = new OTPRequestDBContext();
-        OTPRequest otp = otpDB.get(otpCode);
-        String message = otpDB.messageType(otpType, otpCode, name);
+        OTPRequest otp = OTPRequestDBContext.getInstance().get(otpCode);
+        String message = OTPRequestDBContext.getInstance().messageType(otpType, otpCode, name);
         Email sendEmail = new Email();
         sendEmail.sendMail(email, "Verify Your Code", message);
         return otp;
     }
 
     public OTPRequest get(int userId, int otpId, String otpCode) {
-        OTPRequestDBContext otpDB = new OTPRequestDBContext();
-        OTPRequest otp = otpDB.get(userId, otpId, otpCode);
+        OTPRequest otp = OTPRequestDBContext.getInstance().get(userId, otpId, otpCode);
         return otp;
     }
 
@@ -47,8 +44,7 @@ public class OTPService {
     }
 
     public void verifyCodeActive(int otpId) {
-        OTPRequestDBContext otpDB = new OTPRequestDBContext();
-        otpDB.verifyCodeActive(otpId);
+        OTPRequestDBContext.getInstance().verifyCodeActive(otpId);
     }
 
 }

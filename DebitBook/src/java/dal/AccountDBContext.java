@@ -20,6 +20,14 @@ import util.SQLCommand;
  */
 public class AccountDBContext extends DBContext<Account> {
 
+    // singleton design patttern
+    private static AccountDBContext instance;
+
+    //a single object is used throughout the application, minimizing conflicts and avoiding memory waste.
+    public static AccountDBContext getInstance() {
+        return instance = instance != null ? instance : new AccountDBContext();
+    }
+
     public Account get(String username, String password) {
         PreparedStatement stm = null;
         ResultSet rs = null;
