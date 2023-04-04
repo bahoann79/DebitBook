@@ -37,19 +37,19 @@
     <body>
 
         <c:if test="${requestScope.errorMessage ne null}">
-            <div class="alert alert-danger text-center mt-5">
+            <div class="alert alert-danger text-center">
                 ${requestScope.errorMessage}
             </div>
         </c:if>
 
         <c:if test="${requestScope.message ne null}">
-            <div class="alert alert-success text-center mt-5">
+            <div class="alert alert-success text-center">
                 ${requestScope.message}
             </div>
         </c:if>
 
         <div class="container">
-            <div class="content mt-5">
+            <div class="content">
                 <div class="h3 text-center content-text">Verify your email</div>
 
                 <form action="verifyEmail" class="mt-4" id="verifyEmailForm" method="post"  >

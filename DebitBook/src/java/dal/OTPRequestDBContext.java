@@ -28,31 +28,19 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
         return instance = instance != null ? instance : new OTPRequestDBContext();
     }
 
-    String messageRegister = " <div style=\"text-align: center;\n"
-            + "       background-color: #d3d3d3;\n"
-            + "       padding: 10px;    font-size: 20px;;\">"
-            + "Bạn hoặc ai đó đã sử dụng email để kích hoạt tài khoản khi đăng ký có tên " + "<h1>display_name</h1>" + "\n"
-            + "\n"
-            + "Ðây là  đoạn mã để kích hoạt tài khoản : <h1 style=\"color: red;\">otp_code</h1>\n"
-            + "\n"
-            + " <p style=\"font-style: italic;\"> Lưu ý: Mã code này chỉ có thẻ sử dụng  trong vòng 2 phút kể từ thời gian  gửi . Sau thời gian trên hãy sử dụng chức năng quên mật khẩu để tiến hành tạo mới mật khẩu và kích hoạt tài khoản. </p>\n"
-            + "\n"
-            + "\n"
-            + "<p style=\"font-weight: 800;\">Trân trọng cảm ơn!!</p>"
-            + "</div>";
+    String messageRegister = "<div style=\"text-align: center; background-color: #d3d3d3; padding: 10px; font-size: 20px;\">\n"
+            + "        You or someone else used email to activate account when you signed up with name: <h1\n"
+            + "            style=\"color:black; margin: 4px;\">display_name</h1>\n"
+            + "        Here is the code to activate the account: <h1 style=\"color: red; margin: 4px;\">otp_code</h1>\n"
+            + "        <p style=\"font-style: italic;\"> Note: This code can only be used within 2 minutes from the time of sending </p>\n"
+            + "    </div>";
 
-    String messageForgotPassword = " <div style=\"text-align: center;\n"
-            + "       background-color: #d3d3d3;\n"
-            + "       padding: 10px;    font-size: 20px;\">"
-            + "Bạn hoặc ai đó đã sử dụng email khi quên mật khẩu với tài khoản có tên " + "<h1>display_name</h1>" + "\n"
-            + "\n"
-            + "Ðây là  đoạn mã để kích hoạt tài khoản : <h1 style=\"color: red;\">otp_code</h1>\n"
-            + "\n"
-            + " <p style=\"font-style: italic;\"> Lưu ý: Mã code này chỉ có thẻ sử dụng  trong vòng 2 phút kể từ thời gian  gửi . Sau thời gian trên hãy sử dụng chức năng quên mật khẩu để tiến hành tạo mới mật khẩu và kích hoạt tài khoản. </p>\n"
-            + "\n"
-            + "\n"
-            + "<p style=\"font-weight: 800;\">Trân trọng cảm ơn!!</p>"
-            + "</div>";
+    String messageForgotPassword = "  <div style=\"text-align: center; background-color: #d3d3d3; padding: 10px; font-size: 20px;\">\n"
+            + "        You or someone else used email when you forgot your password with an account named: <h1\n"
+            + "            style=\"color:black; margin: 4px;\">display_name</h1>\n"
+            + "        Here is the code to activate the account: <h1 style=\"color: red; margin: 4px;\">otp_code</h1>\n"
+            + "        <p style=\"font-style: italic;\"> Note: This code can only be used within 2 minutes from the time of sending </p>\n"
+            + "    </div>";
 
     // insert new otp request for user
     public String createOTPRequest(int userId, int otpType) {
@@ -99,7 +87,7 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
 
         } catch (SQLException ex) {
             Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return null;
     }
 
@@ -125,7 +113,7 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
 
         } catch (SQLException ex) {
             Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return null;
     }
 
@@ -153,7 +141,7 @@ public class OTPRequestDBContext extends DBContext<OTPRequest> {
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(OTPRequestDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
 
     }
 
