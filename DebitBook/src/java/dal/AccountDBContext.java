@@ -80,8 +80,6 @@ public class AccountDBContext extends DBContext<Account> {
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeResources(connection, stm, rs);
         }
         return null;
     }
@@ -96,8 +94,6 @@ public class AccountDBContext extends DBContext<Account> {
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeResources(connection, stm);
         }
 
     }

@@ -42,8 +42,6 @@ public class UserDBContext extends DBContext<User> {
 
         } catch (SQLException ex) {
             Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeResources(connection, stm);
         }
     }
 
@@ -56,8 +54,6 @@ public class UserDBContext extends DBContext<User> {
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeResources(connection, stm);
         }
     }
 
