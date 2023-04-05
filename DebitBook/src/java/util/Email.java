@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class Email {
 
-    private final String username = "bahoann79@gmail.com";
+    private final String username = "bahoan1st@gmail.com";
     // Note : sau  1 tgian ko su dung phai thay doi ma cua google
     private final String password = "royzhuwsdcubnkpp";
 
