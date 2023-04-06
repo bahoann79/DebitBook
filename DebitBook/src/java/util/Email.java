@@ -22,7 +22,7 @@ public class Email {
 
     private final String username = "bahoan1st@gmail.com";
     // Note : sau  1 tgian ko su dung phai thay doi ma cua google
-    private final String password = "royzhuwsdcubnkpp";
+    private final String password = "neacabnqivwvwtfo";
 
     public boolean sendMail(String mail, String title, String content) {
         boolean status = false;
@@ -44,7 +44,7 @@ public class Email {
             MimeMessage message = new MimeMessage(session);
 
             // Set From: header field.
-            message.setFrom(new InternetAddress("bahoann79@gmail.com"));
+            message.setFrom(new InternetAddress("bahoan1st@gmail.com"));
 
             // Set To: header field.
             message.addRecipient(Message.RecipientType.TO,
