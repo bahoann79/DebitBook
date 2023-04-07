@@ -13,8 +13,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: #f0f3f5;
 }
 
-.container-fluid {
-    padding: 0 40px;
+.content-debtor-list {
+    padding: 0 40px !important;
 }
 
 /* Table */
@@ -33,15 +33,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .btn-debt {
-    color: green;
-    background-color: #fff;
-    border: 1px solid #198754;
+    color: green !important;
+    background-color: #fff !important;
+    border: 1px solid #198754 !important;
 }
 
 .btn-debt:hover {
-    color: #fff;
-    background-color: #198754;
-    border: 1px solid green;
+    color: #fff !important;
+    background-color: #198754 !important;
+    border: 1px solid green !important;
 }
 
 .btn-act {

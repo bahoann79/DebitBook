@@ -16,7 +16,7 @@
     <body>
         <c:import url="/views/header.jsp" />
 
-        <div class="container-fluid">
+        <div class="container-fluid content-debtor-list">
             <div class="container-head row mt-5">
                 <div class="col-md-10">
                     <h3 class="mt-2">List of Debtors</h3>
