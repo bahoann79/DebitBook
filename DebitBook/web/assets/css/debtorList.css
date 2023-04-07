@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 7, 2023, 2:45:17 PM
+    Author     : bahoann79
+*/
+
+
+.container-head {
+    border: 1px solid #ccc;
+    background-color: #f0f3f5;
+}
+
+.container-fluid {
+    padding: 0 40px;
+}
+
+/* Table */
+.table-heading .heading-input {
+    margin-bottom: 46px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.table-heading .col-act {
+    width: 336px;
+}
+
+.btn-debt {
+    color: green;
+    background-color: #fff;
+    border: 1px solid #198754;
+}
+
+.btn-debt:hover {
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid green;
+}
+
+.btn-act {
+    width: 50%;
+}
+
+/* Paging */
+.paging .page-item-btn {
+    /* width: 50%; */
+}
