@@ -46,7 +46,7 @@ public class SQLCommand {
             + "           ,?)";
 
     // set status for user is verified
-    public static final String USER_QUERY_VERIFY_USER_ACTIVE  = "UPDATE [dbo].[User]\n"
+    public static final String USER_QUERY_VERIFY_USER_ACTIVE = "UPDATE [dbo].[User]\n"
             + "   SET [isActive] = 1\n"
             + " WHERE id = ?";
 
@@ -87,4 +87,10 @@ public class SQLCommand {
             + "   SET [isVerify] = 1\n"
             + "      ,[updatedAt] = GETDATE()\n"
             + "   WHERE id = ?";
+
+    public static final String DEBTOR_QUERY_GET_LIST_DEBTOR_BY_USER_ID = "SELECT [id], [name], [email], [address], [phone_number], "
+            + "[gender], [createdBy] , [createdAt], [updatedAt], [total_money]\n"
+            + "FROM [dbo].[Debtor]\n"
+            + "WHERE createdBy = ?";
+
 }

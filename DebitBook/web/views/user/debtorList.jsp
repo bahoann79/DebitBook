@@ -118,23 +118,27 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Nguyễn Bá Hoàn</td>
-                            <td>Nam Từ Liêm</td>
-                            <td>0983239800</td>
-                            <td>bahoann@gmail.com</td>
-                            <td>100.000</td>
-                            <td>09/09/2002</td>
-                            <td>06/04/2023</td>
-                            <td>
-                                <button type="button" class="btn btn-info"><i class="fa-solid fa-circle-info"></i>
-                                    Detail</button>
-                                <button type="button" class="btn btn-debt"><i class="fa-solid fa-plus"></i> Add new
-                                    debts</button>
-                                <button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Edit</button>
-                            </td>
-                        </tr>
+                        <c:forEach items="${requestScope.debtors}" var="debtor">
+                            <tr>
+                                <td>${debtor.id}</td>
+                                <td>${debtor.name}</td>
+                                <td>${debtor.address}</td>
+                                <td>${debtor.phoneNumber}</td>
+                                <td>${debtor.email}</td>
+                                <td>${debtor.totalMoney}</td>
+                                <td>${debtor.createdAt}</td>
+                                <td>${debtor.updatedAt}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info"><i class="fa-solid fa-circle-info"></i>
+                                        Detail</button>
+                                    <button type="button" class="btn btn-debt"><i class="fa-solid fa-plus"></i> Add new
+                                        debts</button>
+                                    <button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Edit</button>
+                                </td>
+                            </tr>
+
+                        </c:forEach>
+
                     </tbody>
                 </table>
 

@@ -52,7 +52,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown">
                                 <li><a class="dropdown-item" href="profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Debit Book</a></li>
+                                <li><a class="dropdown-item" href="debtorList">Debit Book</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
