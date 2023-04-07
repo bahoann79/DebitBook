@@ -28,6 +28,10 @@
         <servlet-name>ResendOTPController</servlet-name>
         <servlet-class>controller.user.ResendOTPController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DebtorListController</servlet-name>
+        <servlet-class>controller.user.DebtorListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ResendOTPController</servlet-name>
         <url-pattern>/resend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DebtorListController</servlet-name>
+        <url-pattern>/debtorList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
