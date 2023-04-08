@@ -3,7 +3,7 @@
     Created on : Apr 7, 2023, 2:44:43 PM
     Author     : bahoann79
 --%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -125,7 +125,9 @@
                                 <td>${debtor.address}</td>
                                 <td>${debtor.phoneNumber}</td>
                                 <td>${debtor.email}</td>
-                                <td>${debtor.totalMoney}</td>
+                                <td>
+                                    <fmt:formatNumber value="${debtor.totalMoney}" pattern="#,###"/>
+                                </td>
                                 <td>${debtor.createdAt}</td>
                                 <td>${debtor.updatedAt}</td>
                                 <td>

@@ -59,6 +59,26 @@ public class DebtorDBContext extends DBContext<Debtor> {
         return null;
     }
 
+    public int getNumberPage() {
+
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String sql = "SELECT COUNT(*) as totalPage  FROM Debtor ";
+        try {
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery();
+            int totalPage = 0;
+            while (rs.next()) {
+                totalPage = rs.getInt("totalPage");
+                int countPage = totalPage / 5;
+            }
+            return totalPage;
+        } catch (SQLException ex) {
+            Logger.getLogger(DebtorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
     @Override
     public void insert(Debtor model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
