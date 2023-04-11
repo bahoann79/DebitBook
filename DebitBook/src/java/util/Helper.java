@@ -4,6 +4,9 @@
  */
 package util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -25,6 +28,17 @@ public class Helper {
         }
 
         return sb.toString();
+    }
+
+    public static Date toDate(String value) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.parse(value);
+
+    }
+
+    public static java.sql.Date toSQLDate(Date value) {
+        java.sql.Date result = new java.sql.Date(value.getTime());
+        return result;
     }
 
 }
