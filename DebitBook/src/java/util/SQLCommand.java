@@ -93,4 +93,13 @@ public class SQLCommand {
             + "FROM [dbo].[Debtor]\n"
             + "WHERE createdBy = ?";
 
+    // get debtor list with pagination & search
+    public static final String DEBTOR_QUERY_GET_LIST_DEBTOR = "SELECT [id], [name], [email], [address],\n"
+            + "				[phone_number], [createdAt], [updatedAt], [total_money]\n"
+            + "				FROM (SELECT ROW_NUMBER() OVER (ORDER BY id ASC) AS rownum, [id], [name], [email], [address],\n"
+            + "				[phone_number], [gender], [createdBy] , [createdAt], [updatedAt], [total_money]\n"
+            + "				FROM Debtor WHERE createdBy = ? AND isDeleted = 0";
+
+    public static String DEBTOR_QUERY_GET_TOTAL_RECORD_OF_USER = "SELECT COUNT(*) AS total_record FROM Debtor \n"
+            + "				WHERE createdBy = ? AND isDeleted = 0";
 }
