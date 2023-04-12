@@ -4,10 +4,12 @@
  */
 package dal;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,20 +61,124 @@ public class DebtorDBContext extends DBContext<Debtor> {
         return null;
     }
 
-    public int getNumberPage() {
-
+    public ArrayList<Debtor> list(int userId, int idFrom, int idTo, String name, String address, String phoneNumber, String email,
+            BigDecimal moneyFrom, BigDecimal moneyTo, Date createdFrom, Date createdTo, Date updatedFrom, Date updatedTo, int pageIndex, int pageSize) {
         PreparedStatement stm = null;
         ResultSet rs = null;
-        String sql = "SELECT COUNT(*) as totalPage  FROM Debtor ";
+        String sql = SQLCommand.DEBTOR_QUERY_GET_LIST_DEBTOR;
+        ArrayList<Debtor> debtors = new ArrayList<>();
         try {
-            stm = connection.prepareStatement(sql);
-            rs = stm.executeQuery();
-            int totalPage = 0;
-            while (rs.next()) {
-                totalPage = rs.getInt("totalPage");
-                int countPage = totalPage / 5;
+
+            List<Object> params = new ArrayList<>();
+            params.add(userId);
+
+            if (idFrom != -1) {
+                sql += " AND id <= ?";
+                params.add(idFrom);
             }
-            return totalPage;
+            if (idTo != -1) {
+                sql += " AND id >= ?";
+                params.add(idTo);
+            }
+            if (name != null) {
+                sql += " AND name LIKE '%' + ? + '%' ";
+                params.add(name);
+            }
+            if (address != null) {
+                sql += " AND address LIKE '%' + ? + '%' ";
+                params.add(address);
+            }
+            if (phoneNumber != null) {
+                sql += " AND [phone_number] LIKE '%' + ? + '%' ";
+                params.add(phoneNumber);
+            }
+            if (email != null) {
+                sql += " AND email LIKE '%' + ? + '%' ";
+                params.add(email);
+            }
+            if (moneyFrom != BigDecimal.valueOf(-1)) {
+                sql += " AND total_money <= ?";
+                params.add(moneyFrom);
+            }
+            if (moneyTo != BigDecimal.valueOf(-1)) {
+                sql += " AND total_money >= ?";
+                params.add(moneyTo);
+            }
+            if (createdFrom != null) {
+                sql += " AND createdAt <= ?";
+                params.add(createdFrom);
+            }
+            if (createdTo != null) {
+                sql += " AND createdAt >= ?";
+                params.add(createdTo);
+            }
+            if (updatedFrom != null) {
+                sql += " AND updatedAt <= ?";
+                params.add(updatedFrom);
+            }
+            if (updatedTo != null) {
+                sql += " AND updatedAt >= ?";
+                params.add(updatedTo);
+            }
+
+            sql += ") t\n"
+                    + "WHERE rownum > (? - 1) * ? AND rownum <= ? *  ?";
+
+            params.add(pageIndex);
+            params.add(pageSize);
+            params.add(pageIndex);
+            params.add(pageSize);
+
+            stm = connection.prepareStatement(sql);
+            for (int i = 0; i < params.size(); i++) {
+                Object param = params.get(i);
+                System.out.println("param: " + param);
+                if (param instanceof Integer) {
+                    stm.setInt(i + 1, (Integer) param);
+                } else if (param instanceof String) {
+                    stm.setString(i + 1, (String) param);
+                } else if (param instanceof Boolean) {
+                    stm.setBoolean(i + 1, (Boolean) param);
+                } else if (param instanceof java.sql.Date) {
+                    stm.setDate(i + 1, (java.sql.Date) param);
+                }else if (param instanceof BigDecimal){
+                    stm.setBigDecimal(i + 1, (BigDecimal) param);
+                }
+            }
+
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                Debtor debtor = new Debtor();
+                debtor.setId(rs.getInt("id"));
+                debtor.setName(rs.getString("name"));
+                debtor.setEmail(rs.getString("email"));
+                debtor.setAddress(rs.getString("address"));
+                debtor.setPhoneNumber(rs.getString("phone_number"));
+                debtor.setCreatedAt(rs.getDate("createdAt"));
+                debtor.setUpdatedAt(rs.getDate("updatedAt"));
+                debtor.setTotalMoney(rs.getBigDecimal("total_money"));
+                debtors.add(debtor);
+            }
+            return debtors;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DebtorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int getTotalRecord(int userId) {
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = connection.prepareStatement(SQLCommand.DEBTOR_QUERY_GET_TOTAL_RECORD_OF_USER);
+            stm.setInt(1, userId);
+            rs = stm.executeQuery();
+            int totalRecord = 0;
+            if (rs.next()) {
+                totalRecord = rs.getInt("total_record");
+            }
+            return totalRecord;
         } catch (SQLException ex) {
             Logger.getLogger(DebtorDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
