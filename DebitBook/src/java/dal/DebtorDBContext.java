@@ -65,19 +65,19 @@ public class DebtorDBContext extends DBContext<Debtor> {
             BigDecimal moneyFrom, BigDecimal moneyTo, Date createdFrom, Date createdTo, Date updatedFrom, Date updatedTo, int pageIndex, int pageSize) {
         PreparedStatement stm = null;
         ResultSet rs = null;
-        String sql = SQLCommand.DEBTOR_QUERY_GET_LIST_DEBTOR;
+
         ArrayList<Debtor> debtors = new ArrayList<>();
         try {
-
+            String sql = SQLCommand.DEBTOR_QUERY_GET_LIST_DEBTOR;
             List<Object> params = new ArrayList<>();
             params.add(userId);
 
             if (idFrom != -1) {
-                sql += " AND id <= ?";
+                sql += " AND id >= ?";
                 params.add(idFrom);
             }
             if (idTo != -1) {
-                sql += " AND id >= ?";
+                sql += " AND id <= ?";
                 params.add(idTo);
             }
             if (name != null) {
@@ -96,28 +96,28 @@ public class DebtorDBContext extends DBContext<Debtor> {
                 sql += " AND email LIKE '%' + ? + '%' ";
                 params.add(email);
             }
-            if (moneyFrom != BigDecimal.valueOf(-1)) {
-                sql += " AND total_money <= ?";
+            if (moneyFrom != null) {
+                sql += " AND total_money >= ?";
                 params.add(moneyFrom);
             }
-            if (moneyTo != BigDecimal.valueOf(-1)) {
-                sql += " AND total_money >= ?";
+            if (moneyTo != null) {
+                sql += " AND total_money <= ?";
                 params.add(moneyTo);
             }
             if (createdFrom != null) {
-                sql += " AND createdAt <= ?";
+                sql += " AND createdAt >= ?";
                 params.add(createdFrom);
             }
             if (createdTo != null) {
-                sql += " AND createdAt >= ?";
+                sql += " AND createdAt <= ?";
                 params.add(createdTo);
             }
             if (updatedFrom != null) {
-                sql += " AND updatedAt <= ?";
+                sql += " AND updatedAt >= ?";
                 params.add(updatedFrom);
             }
             if (updatedTo != null) {
-                sql += " AND updatedAt >= ?";
+                sql += " AND updatedAt <= ?";
                 params.add(updatedTo);
             }
 
@@ -130,9 +130,9 @@ public class DebtorDBContext extends DBContext<Debtor> {
             params.add(pageSize);
 
             stm = connection.prepareStatement(sql);
-            for (int i = 0; i < params.size(); i++) {
+            int paramSize = params.size();
+            for (int i = 0; i < paramSize; i++) {
                 Object param = params.get(i);
-                System.out.println("param: " + param);
                 if (param instanceof Integer) {
                     stm.setInt(i + 1, (Integer) param);
                 } else if (param instanceof String) {
@@ -141,7 +141,7 @@ public class DebtorDBContext extends DBContext<Debtor> {
                     stm.setBoolean(i + 1, (Boolean) param);
                 } else if (param instanceof java.sql.Date) {
                     stm.setDate(i + 1, (java.sql.Date) param);
-                }else if (param instanceof BigDecimal){
+                } else if (param instanceof BigDecimal) {
                     stm.setBigDecimal(i + 1, (BigDecimal) param);
                 }
             }
@@ -209,5 +209,4 @@ public class DebtorDBContext extends DBContext<Debtor> {
     public ArrayList<Debtor> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }

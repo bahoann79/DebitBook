@@ -18,6 +18,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 /* Table */
+
+#debtorListForm {
+    padding: 0;
+}
+
 .table-heading .heading-input {
     margin-bottom: 46px;
 }
