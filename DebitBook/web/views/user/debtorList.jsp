@@ -20,7 +20,7 @@
             <div class="container-head row mt-5">
                 <div class="col-md-10">
                     <h3 class="mt-2">List of Debtors</h3>
-                    <p>Total: 20 records</p>
+                    <p>Total: ${requestScope.totalRecord} records</p>
                 </div>
 
                 <div class="col-md-2 align-self-center">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="container-body row">
-                <form action="debtorList">
+                <form action="debtorList" method="post" id="debtorListForm">
                     <table class="table table-bordered table-striped ">
                         <thead class="table-heading">
                             <tr class="text-center">
@@ -109,10 +109,10 @@
                                 <!-- Action -->
                                 <td>
                                     <div class="text-center">
-                                        <button class="btn btn-danger btn-act" type="reset" >Clear Filter</button>
+                                        <button class="btn btn-danger btn-act" >Search</button>
                                     </div>
                                     <div class="text-center mt-2">
-                                        <button class="btn btn-primary btn-act">Hide</button>
+                                        <button class="btn btn-primary btn-act">Clear Filter</button>
                                     </div>
                                 </td>
                             </tr>
@@ -139,42 +139,43 @@
                                         <button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Edit</button>
                                     </td>
                                 </tr>
-
                             </c:forEach>
-
                         </tbody>
                     </table>
+
+                    <!-- Pagination taskbar-->
+                    <div class="paging d-flex justify-content-center  ">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item page-item-btn">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item page-item-btn">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">Next</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <select class="form-select" aria-label="Page size">
+                                        <option value="5">5 rows</option>
+                                        <option value="10">10 rows</option>
+                                        <option value="20">20 rows</option>
+                                        <option value="30">30 rows</option>
+                                        <option value="50">50 rows</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </form>
 
 
-                <div class="paging d-flex justify-content-center  ">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li class="page-item page-item-btn">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item page-item-btn">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">Next</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <select class="form-select" aria-label="Page size">
-                                    <option value="5">5 rows</option>
-                                    <option value="10">10 rows</option>
-                                    <option value="20">20 rows</option>
-                                    <option value="30">30 rows</option>
-                                    <option value="50">50 rows</option>
-                                </select>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+
 
 
 
