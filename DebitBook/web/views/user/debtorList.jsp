@@ -48,10 +48,10 @@
                                 <!-- ID -->
                                 <td>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="" placeholder="From" name="idFrom" />
+                                        <input type="text" class="form-control" name="idFrom"  placeholder="From" />
                                     </div>
                                     <div class="input-group mt-2">
-                                        <input type="text" class="form-control" name="" placeholder="To" name="idTo" />
+                                        <input type="text" class="form-control" name="idTo" placeholder="To" />
                                     </div>
                                 </td>
                                 <!-- Name -->
@@ -148,6 +148,9 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
                                 <li class="page-item page-item-btn">
+                                    <button>
+                                        <input type="submit" name="btn-paging" value="Previous">
+                                    </button>
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">Previous</span>
                                     </a>

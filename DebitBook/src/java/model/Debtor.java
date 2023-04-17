@@ -160,4 +160,11 @@ public class Debtor {
         this.debts = debts;
     }
 
+    @Override
+    public String toString() {
+        return "Debtor{" + "id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", user=" + user + '}';
+    }
+    
+    
+
 }

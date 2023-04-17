@@ -209,4 +209,17 @@ public class DebtorDBContext extends DBContext<Debtor> {
     public ArrayList<Debtor> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public static void main(String[] args) {
+
+        DebtorDBContext debtorDB = new DebtorDBContext();
+        ArrayList<Debtor> debtors = new ArrayList<>();
+        debtors = debtorDB.list(1, 10, -1, null, null, null, null, null, null,
+                null, null, null, null, 1, 5);
+        for (Debtor debtor : debtors) {
+            System.out.println(debtor);      
+        }
+
+    }
+
 }
