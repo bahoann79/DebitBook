@@ -148,9 +148,9 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
                                 <li class="page-item page-item-btn">
-                                    <button>
+<!--                                    <button>
                                         <input type="submit" name="btn-paging" value="Previous">
-                                    </button>
+                                    </button>-->
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">Previous</span>
                                     </a>
