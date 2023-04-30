@@ -148,20 +148,13 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
                                 <li class="page-item page-item-btn">
-<!--                                    <button>
-                                        <input type="submit" name="btn-paging" value="Previous">
-                                    </button>-->
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">Previous</span>
-                                    </a>
+                                    <input type="button" name="btn-paging" class="btn-paging" value="Previous">
                                 </li>
                                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item page-item-btn">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">Next</span>
-                                    </a>
+                                    <input type="button" name="btn-paging" class="btn-paging" value="Next">
                                 </li>
                                 <li class="page-item">
                                     <select class="form-select" aria-label="Page size">

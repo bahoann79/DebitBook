@@ -54,6 +54,29 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* Paging */
-.paging .page-item-btn {
-    /* width: 50%; */
+.paging {
+    border: 1px solid #ccc;
+    height: 50px;
+}
+
+.paging .paging-nav{
+    margin-top: 6px;
+}
+
+.pagination .page-link {
+    height: 36px;
+}
+
+.btn-paging {
+    width: 240px;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+    color: #000;
+}
+
+.btn-paging:hover {
+    background-color: #ccc;
+    color: #fff;
 }
